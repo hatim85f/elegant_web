@@ -1,5 +1,5 @@
-import "@expo/metro-runtime";
-
+import "@flyskywhy/react-native-browser-polyfill";
+import "expo-router/entry";
 import { registerRootComponent } from "expo";
 import Constants from "expo-constants";
 import App from "./App";
