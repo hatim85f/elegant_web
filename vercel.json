@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npx expo start --web",
+  "buildCommand": "expo build:web",
   "outputDirectory": "dist",
   "devCommand": "expo",
   "installCommand": "npx expo install",
@@ -8,7 +8,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/home"
+      "destination": "/"
     }
   ]
 }

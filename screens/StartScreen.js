@@ -17,7 +17,7 @@ import * as authActions from "../store/auth/authActions";
 const StartScreen = (props) => {
   const { theme } = useTheme();
 
-  const { token } = useSelector((state) => state.auth);
+  const { token, user } = useSelector((state) => state.auth);
 
   const iconSize = isWeb()
     ? globalWidth("2.2%")
@@ -32,7 +32,7 @@ const StartScreen = (props) => {
 
     const userData = JSON.parse(userDetails);
 
-    if (userData.user) {
+    if (userData?.user) {
       dispatch(authActions.getUserIn(userData.user, userData.token));
 
       props.navigation.navigate("home");
