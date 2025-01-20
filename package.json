@@ -46,5 +46,5 @@
     "expo-router": "^4.0.17",
     "metro": "^0.81.0"
   },
-  "private": false
+  "private": true
 }
