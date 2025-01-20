@@ -1,8 +1,10 @@
-import { registerRootComponent } from 'expo';
+import "@expo/metro-runtime";
 
-import App from './App';
+import { registerRootComponent } from "expo";
+import Constants from "expo-constants";
+import App from "./App";
+import { AppRegistry } from "react-native";
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
+const appName = Constants.expoConfig.name;
+AppRegistry.registerComponent(appName, () => App);
 registerRootComponent(App);
