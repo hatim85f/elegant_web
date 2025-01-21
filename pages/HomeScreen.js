@@ -54,6 +54,11 @@ const HomeScreen = (props) => {
     if (!token) {
       const userDetails = localStorage.getItem("userDetails");
       const userData = JSON.parse(userDetails);
+
+      if (!userData) {
+        props.navigation.navigate("auth");
+      }
+
       if (userData) {
         dispatch(authActions.getUserIn(userData.user, userData.token));
       }
@@ -63,11 +68,13 @@ const HomeScreen = (props) => {
   // ======================================================GET DASHBOARD DATA======================================================
 
   useEffect(() => {
-    setIsLoading(true);
-    dispatch(dashboardActions.getDashboard()).then(() => {
-      setIsLoading(false);
-    });
-  }, [dispatch]);
+    if (token) {
+      setIsLoading(true);
+      dispatch(dashboardActions.getDashboard()).then(() => {
+        setIsLoading(false);
+      });
+    }
+  }, [dispatch, token]);
 
   if (!token) {
     return <View />;

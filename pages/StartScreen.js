@@ -36,6 +36,8 @@ const StartScreen = (props) => {
       dispatch(authActions.getUserIn(userData.user, userData.token));
 
       props.navigation.navigate("home");
+    } else {
+      return;
     }
   };
 
