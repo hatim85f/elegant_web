@@ -1,12 +1,9 @@
-const path = require("path");
+// webpack.config.js
+const createExpoWebpackConfigAsync = require("@expo/webpack-config");
 
-module.exports = {
-  // Other webpack configurations...
-  resolve: {
-    alias: {
-      "react-native$": "react-native-web",
-      "react-native/Libraries/NewAppScreen/components/DebugInstructions":
-        path.resolve(__dirname, "./src/mocks/DebugInstructions.js"),
-    },
-  },
+module.exports = async function (env, argv) {
+  const config = await createExpoWebpackConfigAsync(env, argv);
+  // Customize the config before returning it.
+  // config.resolve.alias["@stripe/stripe-react-native"] = "null-loader"; // ADD THIS LINE
+  return config;
 };

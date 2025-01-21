@@ -197,9 +197,9 @@ const styles = StyleSheet.create({
     top: -5, // Adjust to position badge
     right: -5, // Adjust to position badge
     backgroundColor: Colors.button,
-    borderRadius: globalWidth("0.6%"),
-    width: globalWidth("1.2%"), // Badge size
-    height: globalWidth("1.2%"),
+    borderRadius: globalWidth("0.5%"),
+    width: globalWidth("1%"), // Badge size
+    height: globalWidth("1%"),
     justifyContent: "center",
     alignItems: "center",
   },

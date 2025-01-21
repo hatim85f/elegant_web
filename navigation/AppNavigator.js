@@ -31,7 +31,7 @@ const AppNavigator = (props) => {
           register: "register",
         },
       },
-      home: "home",
+      home: "",
       profile: {
         screens: {
           profile: "profile",
@@ -53,6 +53,7 @@ const AppNavigator = (props) => {
       addNewClient: "addNewClient",
       organization: "organization",
       leads: "leads",
+      notifications: "notifications",
     },
   };
 
