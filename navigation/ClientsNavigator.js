@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import ClientsScreen from "../screens/clients/ClientsScreen";
-import ActiveClientsDetails from "../screens/clients/ActiveClientsDetails";
+import ClientsScreen from "../pages/clients/ClientsScreen";
+import ActiveClientsDetails from "../pages/clients/ActiveClientsDetails";
 
 const MainClientsNavigator = createStackNavigator();
 

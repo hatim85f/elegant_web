@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import TeamMemberScreen, {
   TeamMemberScreenOptions,
-} from "../screens/team/TeamMemberScreen";
-import TeamScreen, { TeamScreenOptions } from "../screens/team/TeamScreen";
+} from "../pages/team/TeamMemberScreen";
+import TeamScreen, { TeamScreenOptions } from "../pages/team/TeamScreen";
 
 const TeamMainNavigator = createStackNavigator();
 

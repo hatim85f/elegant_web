@@ -1,19 +1,19 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { AuthNavigation } from "./AuthNavigation";
-import HomeScreen from "../screens/HomeScreen";
-import ProfileScreen from "../screens/profile/ProfileScreen";
-import TeamScreen from "../screens/team/TeamScreen";
-import EditProfileScreen from "../screens/profile/EditProfileScreen";
+import HomeScreen from "../pages/HomeScreen";
+import ProfileScreen from "../pages/profile/ProfileScreen";
+import TeamScreen from "../pages/team/TeamScreen";
+import EditProfileScreen from "../pages/profile/EditProfileScreen";
 import { ProfileNavigator } from "./PorfileNavigator";
 import { TeamNavigation } from "./TeamNavigation";
-import ClientsScreen from "../screens/clients/ClientsScreen";
-import AddNewClientScreen from "../screens/clients/AddNewClientScreen";
-import ActiveClientsDetails from "../screens/clients/ActiveClientsDetails";
+import ClientsScreen from "../pages/clients/ClientsScreen";
+import AddNewClientScreen from "../pages/clients/AddNewClientScreen";
+import ActiveClientsDetails from "../pages/clients/ActiveClientsDetails";
 import { ClinetNavigator } from "./ClientsNavigator";
-import OrganizationScreen from "../screens/organization/OrganizationScreen";
-import EditOrganizationScreen from "../screens/organization/EditOrganizationScreen";
-import LeadsScreen from "../screens/leads/LeadsScreen";
-import NotificationsScreen from "../screens/notifications/NotificationsScreen";
+import OrganizationScreen from "../pages/organization/OrganizationScreen";
+import EditOrganizationScreen from "../pages/organization/EditOrganizationScreen";
+import LeadsScreen from "../pages/leads/LeadsScreen";
+import NotificationsScreen from "../pages/notifications/NotificationsScreen";
 
 const MainAppNavigator = createStackNavigator();
 

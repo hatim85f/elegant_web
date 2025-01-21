@@ -112,11 +112,15 @@ const MiddleContainer = (props) => {
             size={globalWidth("1.2")}
             color="black"
           />
-          <View style={styles.badge}>
-            <Text style={{ color: "white", fontSize: 12, fontWeight: "bold" }}>
-              {unredNotifications}
-            </Text>
-          </View>
+          {unredNotifications > 0 && (
+            <View style={styles.badge}>
+              <Text
+                style={{ color: "white", fontSize: 12, fontWeight: "bold" }}
+              >
+                {unredNotifications}
+              </Text>
+            </View>
+          )}
         </Pressable>
         <Pressable onPress={() => {}} style={styles.pressBtn}>
           <FontAwesome name="dollar" size={globalWidth("1.2")} color="black" />

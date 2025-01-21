@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import StartScreen from "../screens/StartScreen";
-import LoginScreen from "../screens/Auth/LoginScreen";
-import MobileDeliveryAuth from "../screens/Auth/MobileDeliveryAuth";
-import RegisterationScreen from "../screens/Auth/RegisterationScreen";
+import StartScreen from "../pages/StartScreen";
+import LoginScreen from "../pages/Auth/LoginScreen";
+import MobileDeliveryAuth from "../pages/Auth/MobileDeliveryAuth";
+import RegisterationScreen from "../pages/Auth/RegisterationScreen";
 
 const MainAuthNavigation = createStackNavigator();
 

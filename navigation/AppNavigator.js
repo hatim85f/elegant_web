@@ -31,7 +31,7 @@ const AppNavigator = (props) => {
           register: "register",
         },
       },
-      home: "",
+      home: "home",
       profile: {
         screens: {
           profile: "profile",
