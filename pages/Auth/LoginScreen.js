@@ -10,6 +10,8 @@ import { Pressable } from "react-native-gesture-handler";
 
 import * as authActions from "../../store/auth/authActions";
 
+import { Entypo } from "@expo/vector-icons";
+
 const LoginScreen = (props) => {
   const { theme } = useTheme();
 
@@ -17,8 +19,9 @@ const LoginScreen = (props) => {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberChecked, setRememberChecked] = useState(false);
+  const [rememberChecked, setRememberChecked] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordSecured, setPasswordSecured] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -96,12 +99,16 @@ const LoginScreen = (props) => {
               { borderBottomColor: theme.text, backgroundColor: theme.card },
               styles.inputContainer,
             ]}
-            secureTextEntry={true}
-            rightIcon={{
-              type: "entypo",
-              name: "lock",
-              color: theme.background,
-            }}
+            secureTextEntry={passwordSecured}
+            rightIcon={() => (
+              <Pressable onPress={() => setPasswordSecured(!passwordSecured)}>
+                <Entypo
+                  name={passwordSecured ? "eye" : "eye-with-line"}
+                  size={24}
+                  color={theme.background}
+                />
+              </Pressable>
+            )}
           />
           <View style={styles.checksRow}>
             <View style={styles.smallRow}>
