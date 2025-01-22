@@ -30,10 +30,14 @@ const ErrorModal = () => {
           <View
             style={[
               styles.header,
-              { color: theme.text, backgroundColor: theme.background },
+              {
+                color: theme.text,
+                backgroundColor: theme.background,
+                padding: 10,
+              },
             ]}
           >
-            <Text style={[styles.errorTitle, { color: "#000" }]}>
+            <Text style={[styles.errorTitle, { color: theme.text }]}>
               {" "}
               {error}{" "}
             </Text>

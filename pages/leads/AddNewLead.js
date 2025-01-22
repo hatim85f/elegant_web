@@ -113,7 +113,9 @@ const AddNewLead = (props) => {
         selectedMember ? selectedMember : user._id,
         status,
         notes,
-        new Date(scheduledFollowupDate).toISOString()
+        scheduledFollowupDate
+          ? new Date(scheduledFollowupDate).toISOString()
+          : ""
       )
     ).then(() => {
       setUploadingLead(false);
@@ -194,7 +196,21 @@ const AddNewLead = (props) => {
             ]}
           >
             <Input
-              label="Name"
+              label={() => (
+                <View style={styles.labelRow}>
+                  <Text
+                    style={[
+                      styles.label,
+                      { color: "#ff0055", fontSize: globalWidth("1.5%") },
+                    ]}
+                  >
+                    *{" "}
+                  </Text>
+                  <Text style={[styles.label, { color: globalColors.text }]}>
+                    Name
+                  </Text>
+                </View>
+              )}
               value={name}
               onChangeText={(text) => setName(text)}
               containerStyle={styles.inputContainer}
@@ -208,19 +224,21 @@ const AddNewLead = (props) => {
               keyboardType="default"
               autoCapitalize="words"
             />
-            <Text
-              style={[
-                styles.label,
-                {
-                  color: globalColors.text,
-                  fontWeight: "bold",
-                  marginLeft: 10,
-                  marginTop: globalHeight("0.5%"),
-                },
-              ]}
+            <View
+              style={[styles.labelRow, { paddingLeft: globalWidth("0.5%") }]}
             >
-              Type
-            </Text>
+              <Text
+                style={[
+                  styles.label,
+                  { color: "#ff0055", fontSize: globalWidth("1.5%") },
+                ]}
+              >
+                *{" "}
+              </Text>
+              <Text style={[styles.label, { color: globalColors.text }]}>
+                Type
+              </Text>
+            </View>
             <DropDownPicker
               items={typeList}
               open={typeListIsOpened}
@@ -249,7 +267,21 @@ const AddNewLead = (props) => {
               textStyle={[styles.label, { color: "#000" }]}
             />
             <Input
-              label="Email"
+              label={() => (
+                <View style={styles.labelRow}>
+                  <Text
+                    style={[
+                      styles.label,
+                      { color: "#ff0055", fontSize: globalWidth("1.5%") },
+                    ]}
+                  >
+                    *{" "}
+                  </Text>
+                  <Text style={[styles.label, { color: globalColors.text }]}>
+                    Email
+                  </Text>
+                </View>
+              )}
               value={email}
               onChangeText={(text) => setEmail(text)}
               containerStyle={styles.inputContainer}
@@ -264,7 +296,21 @@ const AddNewLead = (props) => {
               autoCapitalize="none"
             />
             <Input
-              label="Phone"
+              label={() => (
+                <View style={styles.labelRow}>
+                  <Text
+                    style={[
+                      styles.label,
+                      { color: "#ff0055", fontSize: globalWidth("1.5%") },
+                    ]}
+                  >
+                    *{" "}
+                  </Text>
+                  <Text style={[styles.label, { color: globalColors.text }]}>
+                    Phone
+                  </Text>
+                </View>
+              )}
               value={phone}
               onChangeText={(text) => setPhone(text)}
               containerStyle={styles.inputContainer}
@@ -280,7 +326,21 @@ const AddNewLead = (props) => {
               maxLength={13}
             />
             <Input
-              label="Address"
+              label={() => (
+                <View style={styles.labelRow}>
+                  <Text
+                    style={[
+                      styles.label,
+                      { color: "#ff0055", fontSize: globalWidth("1.5%") },
+                    ]}
+                  >
+                    *{" "}
+                  </Text>
+                  <Text style={[styles.label, { color: globalColors.text }]}>
+                    Address
+                  </Text>
+                </View>
+              )}
               value={address}
               onChangeText={(text) => setAddress(text)}
               containerStyle={styles.inputContainer}
@@ -585,6 +645,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: globalWidth("1.2%"),
     fontFamily: "poppins",
+  },
+  labelRow: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 

@@ -125,7 +125,7 @@ const AddNewClientScreen = (props) => {
 
   useEffect(() => {
     if (team) {
-      const teamList = team.map((member) => {
+      const teamList = team?.map((member) => {
         return {
           label: `${member.firstName} ${member.lastName}`,
           value: member._id,

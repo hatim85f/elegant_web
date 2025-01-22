@@ -38,8 +38,8 @@ const EditOrganizationScreen = (props) => {
   const [logo, setLogo] = useState(userOrganization?.logo);
   const [industry, setIndustry] = useState(userOrganization?.industry);
   const [branches, setBranches] = useState(
-    userOrganization.branches
-      ? userOrganization.branches.map((branch) => ({
+    userOrganization?.branches
+      ? userOrganization?.branches.map((branch) => ({
           ...branch,
           dropdownOpen: false, // Initialize dropdown state for each branch
         }))
@@ -72,8 +72,8 @@ const EditOrganizationScreen = (props) => {
   }, [dispatch]);
 
   const { pickAndUploadImage, imageUrl, progress } = useImageUpload(
-    `${userOrganization.name?.trim()}-image.jpg`,
-    `${userOrganization.name?.trim()}-image/images`
+    `${userOrganization?.name?.trim()}-image.jpg`,
+    `${userOrganization?.name?.trim()}-image/images`
   );
 
   const changeCompanyLogo = async () => {
@@ -145,6 +145,8 @@ const EditOrganizationScreen = (props) => {
       </View>
     );
   }
+
+  console.log(userOrganization);
 
   return (
     <View

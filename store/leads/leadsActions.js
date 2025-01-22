@@ -40,6 +40,20 @@ export const addNewLead = (
   return async (dispatch, getState) => {
     const { user, token } = getState().auth;
 
+    console.log({
+      name,
+      type,
+      email,
+      phone,
+      address,
+      relatedBranch,
+      source,
+      assignedTo,
+      status,
+      notes,
+      scheduledFollowupDate,
+    });
+
     const response = await fetch(`${mainLink}/leads/create/${user._id}`, {
       method: "POST",
       headers: {

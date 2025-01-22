@@ -263,9 +263,8 @@ const ViewLeads = (props) => {
         </Pressable>
 
         {Array.from({ length: totalPages }).map((_, index) => (
-          <Pressable
+          <View
             key={index}
-            onPress={() => handlePageSelect(index + 1)}
             style={[
               styles.pageNumber,
               {
@@ -277,7 +276,7 @@ const ViewLeads = (props) => {
             <Text style={[styles.pageText, { color: globalColors.text }]}>
               {index + 1}
             </Text>
-          </Pressable>
+          </View>
         ))}
 
         <Pressable

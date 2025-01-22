@@ -34,7 +34,7 @@ const OrganizationScreen = (props) => {
         dispatch(authActions.getUserIn(userData.user, userData.token));
       }
     }
-  }, [token]);
+  }, [dispatch, token]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,17 +57,23 @@ const OrganizationScreen = (props) => {
         style={{
           backgroundColor: globalColors.background,
           flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <Loader loadingMessage="Loading..." loadingColor={globalColors.text} />
+        <MainHolderScreen
+          pageTitle="Organization"
+          navigation={props.navigation}
+        >
+          <Loader
+            loadingMessage="Loading..."
+            loadingColor={globalColors.text}
+          />
+        </MainHolderScreen>
       </View>
     );
   }
 
   const formatPhoneNumber = (phoneNumber) => {
-    return phoneNumber.replace(
+    return phoneNumber?.replace(
       /(\+?\d{3})(\d{3})(\d{3})(\d{3})/,
       "$1 $2 $3 $4"
     );
@@ -107,11 +113,11 @@ const OrganizationScreen = (props) => {
               rounded
               size="large"
               source={{
-                uri: userOrganization.logo,
+                uri: userOrganization?.logo,
               }}
             />
             <Text style={[styles.header, { color: globalColors.text }]}>
-              {userOrganization.name}
+              {userOrganization?.name}
             </Text>
           </View>
           <View
@@ -126,7 +132,7 @@ const OrganizationScreen = (props) => {
               color={globalColors.text}
             />
             <Text style={[styles.dataText, { color: globalColors.text }]}>
-              {userOrganization.industry}
+              {userOrganization?.industry}
             </Text>
           </View>
           <View
@@ -142,7 +148,7 @@ const OrganizationScreen = (props) => {
             />
             <Text style={[styles.dataText, { color: globalColors.text }]}>
               {" "}
-              {userOrganization.website}{" "}
+              {userOrganization?.website}{" "}
             </Text>
           </View>
           <View
@@ -157,7 +163,7 @@ const OrganizationScreen = (props) => {
               color={globalColors.text}
             />
             <Text style={[styles.dataText, { color: globalColors.text }]}>
-              {userOrganization.address}
+              {userOrganization?.address}
             </Text>
           </View>
           <View
