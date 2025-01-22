@@ -196,7 +196,7 @@ const RegisterationScreen = (props) => {
             />
           </View>
           <Input
-            placeholder="Username"
+            placeholder="Email"
             placeholderTextColor={Colors.text}
             value={userName}
             onChangeText={(text) => setUserName(text)}

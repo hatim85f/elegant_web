@@ -61,8 +61,8 @@ const AddingClients = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    const userBranches = userOrganization.branches;
-    const branches = userBranches.map((branch) => {
+    const userBranches = userOrganization?.branches;
+    const branches = userBranches?.map((branch) => {
       return { label: branch.branchName, value: branch._id };
     });
 

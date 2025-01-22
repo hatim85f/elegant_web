@@ -70,7 +70,7 @@ const LoginScreen = (props) => {
             Sign in to your account
           </Text>
           <Input
-            placeholder="Username"
+            placeholder="Email"
             value={userName}
             onChangeText={(text) => setUserName(text)}
             inputStyle={[
