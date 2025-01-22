@@ -116,7 +116,7 @@ const EditProfileScreen = (props) => {
             >
               <Avatar
                 rounded
-                size="xlarge"
+                size={globalWidth("7%")}
                 source={{
                   uri: avatar,
                 }}
