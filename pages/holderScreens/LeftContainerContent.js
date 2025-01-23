@@ -22,7 +22,7 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 
-import { Pressable } from "react-native-gesture-handler";
+import { Pressable, ScrollView } from "react-native-gesture-handler";
 
 const LeftContainerContent = (props) => {
   const { globalColors, toggleTheme, theme, saveDefaultDarkTheme } = useTheme();
@@ -136,6 +136,26 @@ const LeftContainerContent = (props) => {
       route: "leads",
       showFor: ["owner", "admin", "manager", "employee"],
     },
+    {
+      item: "T & C",
+      icon: (
+        <FontAwesome name="legal" size={globalWidth("1.4%")} color="black" />
+      ),
+      route: "terms_and_conditions",
+      showFor: ["owner", "admin", "manager", "employee"],
+    },
+    {
+      item: "Privacy Policy",
+      icon: (
+        <MaterialIcons
+          name="privacy-tip"
+          size={globalWidth("1.4%")}
+          color="black"
+        />
+      ),
+      route: "privacy_policy",
+      showFor: ["owner", "admin", "manager", "employee"],
+    },
   ];
 
   if (!token) {
@@ -144,87 +164,106 @@ const LeftContainerContent = (props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.upperContainer}>
-        <View style={styles.userContainer}>
-          <Image source={userAvatar} rounded style={styles.avatar} />
-          <View style={styles.userInfo}>
-            <Text style={styles.userName}>
-              {user.firstName.charAt(0)}. {user.lastName}{" "}
-            </Text>
-            <Text style={styles.role}>
-              {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-            </Text>
+      <ScrollView
+        scrollEnabled
+        scrollEventThrottle={16}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.upperContainer}>
+          <View style={styles.userContainer}>
+            <Image source={userAvatar} rounded style={styles.avatar} />
+            <View style={styles.userInfo}>
+              <Text style={styles.userName}>
+                {user.firstName.charAt(0)}. {user.lastName}{" "}
+              </Text>
+              <Text style={styles.role}>
+                {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.listContainer}>
+            {itemsList.map((item, index) => {
+              const isActive =
+                routeName === item.route.split("/")[0] ||
+                (routeName === "edit_profile" && item.route === "profile") ||
+                (routeName === "team_member" && item.route === "team") ||
+                (routeName === "client_details" && item.route === "clients") ||
+                (routeName === "edit_organization" &&
+                  item.route === "organization");
+              return (
+                <Pressable
+                  onPress={() => props.navigation.navigate(item.route)}
+                  style={[
+                    styles.listItemContainer,
+                    {
+                      borderWidth: isActive ? 2 : 0,
+                      display: item.showFor.includes(user.role)
+                        ? "flex"
+                        : "none",
+                    },
+                  ]}
+                  key={index}
+                >
+                  {item.icon}
+                  <Text style={styles.itemName}>{item.item}</Text>
+                </Pressable>
+              );
+            })}
           </View>
         </View>
-        <View style={styles.listContainer}>
-          {itemsList.map((item, index) => {
-            const isActive =
-              routeName === item.route.split("/")[0] ||
-              (routeName === "edit_profile" && item.route === "profile") ||
-              (routeName === "team_member" && item.route === "team") ||
-              (routeName === "client_details" && item.route === "clients") ||
-              (routeName === "edit_organization" &&
-                item.route === "organization");
-            return (
-              <Pressable
-                onPress={() => props.navigation.navigate(item.route)}
-                style={[
-                  styles.listItemContainer,
-                  {
-                    borderWidth: isActive ? 2 : 0,
-                    display: item.showFor.includes(user.role) ? "flex" : "none",
-                  },
-                ]}
-                key={index}
-              >
-                {item.icon}
-                <Text style={styles.itemName}>{item.item}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-      </View>
-      <View style={[styles.listContainer, { marginTop: -globalHeight("2%") }]}>
-        <Pressable
-          style={styles.imageContainer}
-          onPress={() => Linking.openURL("https://www.codexpandit.com")}
-        >
-          <Image
-            source={require("../../assets/images/powered_light.png")}
-            style={styles.powered}
-          />
-        </Pressable>
-        <View style={styles.line} />
         <View
-          style={[styles.listItemContainer, { marginTop: -globalHeight("2%") }]}
+          style={[styles.listContainer, { marginTop: -globalHeight("2%") }]}
         >
-          <Switch
-            value={theme.primary === "#121212"}
-            onValueChange={toggleTheme}
-            color={theme.background}
-            thumbColor={Colors.button}
-            trackColor={{ false: "#000", true: "#fff" }}
-          />
-          <Text style={styles.itemName}>
-            {" "}
-            {theme.primary === "#121212" ? "Dark Mode" : "Light Mode"}{" "}
-          </Text>
+          <Pressable
+            style={styles.imageContainer}
+            onPress={() => Linking.openURL("https://www.codexpandit.com")}
+          >
+            <Image
+              source={require("../../assets/images/powered_light.png")}
+              style={styles.powered}
+            />
+          </Pressable>
+          <View style={styles.line} />
+          <View
+            style={[
+              styles.listItemContainer,
+              { marginTop: -globalHeight("2%") },
+            ]}
+          >
+            <Switch
+              value={theme.primary === "#121212"}
+              onValueChange={toggleTheme}
+              color={theme.background}
+              thumbColor={Colors.button}
+              trackColor={{ false: "#000", true: "#fff" }}
+            />
+            <Text style={styles.itemName}>
+              {" "}
+              {theme.primary === "#121212" ? "Dark Mode" : "Light Mode"}{" "}
+            </Text>
+          </View>
+          <Pressable
+            onPress={() => {}}
+            style={[
+              styles.listItemContainer,
+              { marginTop: -globalHeight("2%") },
+            ]}
+          >
+            <Ionicons name="settings-sharp" size={24} color="black" />
+            <Text style={styles.itemName}>Settings</Text>
+          </Pressable>
+          <Pressable
+            onPress={logOut}
+            style={[
+              styles.listItemContainer,
+              { marginTop: -globalHeight("2%") },
+            ]}
+          >
+            <MaterialCommunityIcons name="logout" size={24} color="black" />
+            <Text style={styles.itemName}>Logout</Text>
+          </Pressable>
         </View>
-        <Pressable
-          onPress={() => {}}
-          style={[styles.listItemContainer, { marginTop: -globalHeight("2%") }]}
-        >
-          <Ionicons name="settings-sharp" size={24} color="black" />
-          <Text style={styles.itemName}>Settings</Text>
-        </Pressable>
-        <Pressable
-          onPress={logOut}
-          style={[styles.listItemContainer, { marginTop: -globalHeight("2%") }]}
-        >
-          <MaterialCommunityIcons name="logout" size={24} color="black" />
-          <Text style={styles.itemName}>Logout</Text>
-        </Pressable>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -291,6 +330,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: globalHeight("4%"),
   },
   powered: {
     width: globalWidth("10%"),

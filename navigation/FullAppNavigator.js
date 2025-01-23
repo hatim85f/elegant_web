@@ -14,6 +14,8 @@ import OrganizationScreen from "../pages/organization/OrganizationScreen";
 import EditOrganizationScreen from "../pages/organization/EditOrganizationScreen";
 import LeadsScreen from "../pages/leads/LeadsScreen";
 import NotificationsScreen from "../pages/notifications/NotificationsScreen";
+import TermsAndConditions from "../pages/legal/TermsAndConditions";
+import PrivacyPolicy from "../pages/legal/PrivacyPolicy";
 
 const MainAppNavigator = createStackNavigator();
 
@@ -103,6 +105,22 @@ export const FullAppNavigator = () => {
         options={{
           headerShown: false,
           title: "Notifications",
+        }}
+      />
+      <MainAppNavigator.Screen
+        name="terms_and_conditions"
+        component={TermsAndConditions}
+        options={{
+          headerShown: false,
+          title: "Terms and Conditions",
+        }}
+      />
+      <MainAppNavigator.Screen
+        name="privacy_policy"
+        component={PrivacyPolicy}
+        options={{
+          headerShown: false,
+          title: "Privacy Policy",
         }}
       />
     </MainAppNavigator.Navigator>

@@ -54,6 +54,7 @@ const AppNavigator = (props) => {
       organization: "organization",
       leads: "leads",
       notifications: "notifications",
+      terms_and_conditions: "terms_and_conditions",
     },
   };
 
