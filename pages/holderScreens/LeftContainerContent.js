@@ -149,7 +149,7 @@ const LeftContainerContent = (props) => {
           <Image source={userAvatar} rounded style={styles.avatar} />
           <View style={styles.userInfo}>
             <Text style={styles.userName}>
-              {user.firstName} {user.lastName.charAt(0)}.{" "}
+              {user.firstName.charAt(0)}. {user.lastName}{" "}
             </Text>
             <Text style={styles.role}>
               {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
