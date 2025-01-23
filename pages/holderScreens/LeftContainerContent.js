@@ -25,7 +25,7 @@ import {
 import { Pressable } from "react-native-gesture-handler";
 
 const LeftContainerContent = (props) => {
-  const { globalColors, toggleTheme, theme } = useTheme();
+  const { globalColors, toggleTheme, theme, saveDefaultDarkTheme } = useTheme();
 
   const { user, token } = useSelector((state) => state.auth);
 
@@ -38,6 +38,7 @@ const LeftContainerContent = (props) => {
     : require("../../assets/images/avatar.jpg");
 
   const logOut = () => {
+    saveDefaultDarkTheme();
     window.location.href = "/start";
     dispatch(authActions.logOut());
   };

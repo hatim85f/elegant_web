@@ -66,7 +66,9 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, globalColors, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, globalColors, toggleTheme, saveDefaultDarkTheme }}
+    >
       {children}
     </ThemeContext.Provider>
   );
