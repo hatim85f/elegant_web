@@ -75,7 +75,13 @@ const AddMember = (props) => {
       return { label: branch.branchName, value: branch._id };
     });
 
-    setBranchesList(branches || []);
+    console.log("branches", branches);
+
+    if (branches) {
+      setBranchesList(branches);
+    } else {
+      setBranchesList([]);
+    }
   }, [userOrganization]);
 
   return (
