@@ -79,13 +79,25 @@ const StartScreen = (props) => {
             </p>
           </View>
           <View style={styles.buttonsRow}>
-            <Pressable onPress={() => {}}>
+            <Pressable
+              onPress={() =>
+                Linking.openURL(
+                  "https://play.google.com/store/apps/details?id=com.hatim85f.elegant_mob&pcampaignid=web_share"
+                )
+              }
+            >
               <Image
                 source={require("../assets/images/google_play.png")}
                 style={styles.logoApp}
               />
             </Pressable>
-            <Pressable onPress={() => {}}>
+            <Pressable
+              onPress={() =>
+                Linking.openURL(
+                  "https://apps.apple.com/us/app/elegant-flow/id6741024484"
+                )
+              }
+            >
               <Image
                 source={require("../assets/images/app_store.png")}
                 style={styles.logoApp}
